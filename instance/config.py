@@ -7,13 +7,15 @@ class Config:
 
     DEBUG = False
     CSRF_ENABLED = True
-    SECRET = os.getenv('SECRET')
-    SQLACHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+    SECRET_KEY = 'p9Bv<3Eid9%$i01'
+    SQLALCHEMY_DATABASE_URI = "sqlite:///flask_api.db"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class DevelopmentConfig(Config):
     """Configurations for development."""
 
+    SQLALCHEMY_ECHO = True
     DEBUG = True
 
 
@@ -21,7 +23,7 @@ class TestingConfig(Config):
     """onfigurations for Testing, with a separate test databse."""
 
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///app_test.db"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///test_db.db"
     DEBUG = True
 
 
